@@ -36,4 +36,40 @@ struct MockData {
         )
     
     static let sampleAppetizers: [Appetizer] = [sampleAppetizer, sampleAppetizer, sampleAppetizer, sampleAppetizer]
+    
+    
+    static let orderItemOne = Appetizer(
+            id: 001,
+            name: "Test Appetizer One",
+            description: "This is the description of my test appetizer: it's quite delicious!",
+            price: 9.99,
+            imageURL: "",
+            protein: 99,
+            carbs: 99,
+            calories: 99
+        )
+    
+    static let orderItemTwo = Appetizer(
+            id: 002,
+            name: "Test Appetizer Two",
+            description: "This is the description of my test appetizer: it's quite delicious!",
+            price: 9.99,
+            imageURL: "",
+            protein: 99,
+            carbs: 99,
+            calories: 99
+        )
+    
+    static let OrderItemThree = Appetizer(
+            id: 003,
+            name: "Test Appetizer Three",
+            description: "This is the description of my test appetizer: it's quite delicious!",
+            price: 9.99,
+            imageURL: "",
+            protein: 99,
+            carbs: 99,
+            calories: 99
+        )
+    
+    static let orderItems = [orderItemOne, orderItemTwo, OrderItemThree]
 }
