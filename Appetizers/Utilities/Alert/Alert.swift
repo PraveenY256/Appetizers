@@ -42,6 +42,12 @@ struct AlertContext {
         dismissButtonTitle: .default(Text("OK"))
     )
     
+    static let genericError = AlertItem(
+        title: Text("Unknown Error"),
+        message: Text("Unable to complete the request. Please check your internet connection and try again."),
+        dismissButtonTitle: .default(Text("OK"))
+    )
+    
     
     //MARK: - Account alerts
     

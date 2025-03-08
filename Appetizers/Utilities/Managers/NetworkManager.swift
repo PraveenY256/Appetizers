@@ -20,7 +20,7 @@ final class NetworkManager {
     private init() {}
     
     
-    func getAppetizers(completion: @escaping (Result<[Appetizer], APError>) -> Void) {
+    /*func getAppetizers(completion: @escaping (Result<[Appetizer], APError>) -> Void) {
         
         guard let url = URL(string: appetizersURL) else {
             completion(.failure(.invalidURL))
@@ -57,6 +57,28 @@ final class NetworkManager {
         }
         
         task.resume()
+    }*/
+    
+    
+    func getAppetizers() async throws -> [Appetizer] {
+        
+        guard let url = URL(string: appetizersURL) else {
+            throw APError.invalidURL
+        }
+        
+        let (data, response) = try await URLSession.shared.data(from: url)
+        
+        guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
+            throw APError.invalidResponse
+        }
+        
+        do {
+            let decoder = JSONDecoder()
+            let decodedResponse = try decoder.decode(AppetizerResponse.self, from: data)
+            return decodedResponse.request
+        } catch {
+            throw APError.unableToComplete
+        }
     }
     
     
@@ -76,7 +98,7 @@ final class NetworkManager {
         
         let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
             
-            guard let data = data, let image = UIImage(data: data) else {
+            guard let data, let image = UIImage(data: data) else {
                 completed(nil)
                 return
             }

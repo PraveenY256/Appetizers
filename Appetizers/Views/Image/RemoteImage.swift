@@ -8,11 +8,12 @@
 import SwiftUI
 
 final class ImageLoader: ObservableObject {
+    
     @Published var image: Image? = nil
     
     func load(from urlString: String) {
         NetworkManager.shared.downloadImage(from: urlString) { uiImage in
-            guard let uiImage = uiImage else {
+            guard let uiImage else {
                 return
             }
             DispatchQueue.main.async {
@@ -34,6 +35,7 @@ struct RemoteImage: View {
 
 
 struct AppetizerRemoteImage: View {
+    
     @StateObject var imageLoader = ImageLoader()
     
     var urlString: String
