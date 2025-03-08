@@ -18,3 +18,7 @@ struct AppetizersApp: App {
         }
     }
 }
+
+#Preview {
+    AppetizersTabView().environmentObject(Order())
+}

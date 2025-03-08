@@ -37,7 +37,9 @@ struct AccountView: View {
                         .keyboardType(.emailAddress)
                         .textInputAutocapitalization(.never)
                         .autocorrectionDisabled(true)
-                    DatePicker("Birthday", selection: $viewModel.user.birthDay, displayedComponents: .date)
+                    
+                    DatePicker("Birthday", selection: $viewModel.user.birthDay, in: Date().oneHundredYearsAgo...Date().eighteenYearsOldAgo, displayedComponents: .date)
+                    
                     Button {
                         viewModel.saveChanges()
                     } label: {
